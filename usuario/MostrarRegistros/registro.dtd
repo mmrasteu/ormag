@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT Registros (Registro+)>
+<!ELEMENT Registro (Usuario, Accion, Hora, Dia, Mes, Anyo)>
+
+<!ELEMENT Usuario (#PCDATA)>
+
+<!ELEMENT Accion (#PCDATA)>
+
+<!ELEMENT Hora (#PCDATA)>
+
+<!ELEMENT Dia (#PCDATA)>
+
+<!ELEMENT Mes (#PCDATA)>
+
+<!ELEMENT Anyo (#PCDATA)>

@@ -1,0 +1,162 @@
+body{
+  height: auto;
+  background-color: #eeffff;
+}
+img.encabezado{
+  margin-top: 3.5%;
+  height: 30%;
+  width: 100%;
+    
+}
+.menu-superior{
+  float: left;
+}
+img.menu-superior{
+  height: 10%;
+  width: 18%;
+    
+}
+
+img.mensajes{
+  float: right;
+  height: 8%;
+  width: 5%;
+}
+
+input.menu-superior{
+  margin-top: 0.5%;
+  font-size: 130%;
+  height: auto;
+  width: auto;
+}
+
+img.icono{
+  height: 200px;
+  width: 200px;
+    
+}
+h1.icono{
+  text-align: center;
+}
+
+div.izquierda{
+  float: left;
+  margin: auto;
+  margin-left: 10%;
+  
+}
+
+div.izquierda-top{
+  float: left; 
+}
+
+div.derecha{
+  float: right;
+  margin: auto;
+  margin-right: 10%;
+}
+
+div.derecha-top{
+  margin-top: 0.5%;
+  position: right;
+  float: right; 
+}
+
+div.centro{
+  float: center;
+  margin: 20px;
+  
+  
+}
+input { font-size: auto;
+  height: auto;
+   width: auto;
+}
+
+.menu { font-size: 130%;
+  height: auto;
+   width: auto;
+}
+    
+.btnRedondoVerde{
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    color: white;
+    background-color: green;
+}
+
+.btnRedondoRojo{
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    color: white;
+    background-color: red;
+} 
+ 
+
+td {
+	text-align: center;
+} 
+		
+h1, h3, h4{
+    font-style: bold;
+}
+
+h1, h3, h4{
+    color: #5858FA;
+}
+
+table.inicio
+{
+  height: auto;
+  width: auto;
+  margin: 0 auto;
+  box-shadow: 2px 2px 5px #585858;
+  background-color: #F2F2F2;
+}
+
+table
+{
+  height: auto;
+  width: 100%;
+  box-shadow: 2px 2px 5px #585858;
+  background-color: #F2F2F2;
+}
+
+table,th { 
+
+  border-collapse: separate;
+  border-radius: 15px;
+  border: #642EFE 3px solid;
+  padding: 10px;
+}
+
+th{
+    color: #5858FA;
+    background-color: #A9A9F5;
+}
+
+.relativo{
+  position: relative;
+}
+.absoluto{
+  position: absolute;
+  z-index: 1;
+}
+/*
+  .menu-lateral{
+    position: absolute;
+    z-index: 2;
+    float: right;
+  }
+  .btnMenu-lateral{
+    height: 50px;
+    width: 50px;
+  }
+
+  .btnCerrarMenu{
+    height: 20px;
+    width: 20px;
+  }
+*/

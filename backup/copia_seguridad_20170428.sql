@@ -1,0 +1,125 @@
+-- MySQL dump 10.16  Distrib 10.1.21-MariaDB, for Win32 (AMD64)
+--
+-- Host: localhost    Database: localhost
+-- ------------------------------------------------------
+-- Server version	10.1.21-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `mensajes`
+--
+
+DROP TABLE IF EXISTS `mensajes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `mensajes` (
+  `ID_MENSAJE` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `ID_EMISOR` smallint(5) unsigned NOT NULL,
+  `ID_RECEPTOR` smallint(5) unsigned NOT NULL,
+  `EMISOR` char(100) NOT NULL,
+  `RECEPTOR` char(100) NOT NULL,
+  `TITULO` char(30) NOT NULL,
+  `LEIDO` tinyint(1) NOT NULL DEFAULT '0',
+  `TEXTO` text NOT NULL,
+  `FECHA` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`ID_MENSAJE`),
+  KEY `FK_USUARIOS_MENSAJES1` (`ID_EMISOR`),
+  KEY `FK_USUARIOS_MENSAJES2` (`ID_RECEPTOR`),
+  KEY `FK_USUARIOS_MENSAJES3` (`EMISOR`),
+  KEY `FK_USUARIOS_MENSAJES4` (`RECEPTOR`),
+  CONSTRAINT `FK_USUARIOS_MENSAJES1` FOREIGN KEY (`ID_EMISOR`) REFERENCES `usuarios` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_USUARIOS_MENSAJES2` FOREIGN KEY (`ID_RECEPTOR`) REFERENCES `usuarios` (`ID_USER`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_USUARIOS_MENSAJES3` FOREIGN KEY (`EMISOR`) REFERENCES `usuarios` (`USER`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_USUARIOS_MENSAJES4` FOREIGN KEY (`RECEPTOR`) REFERENCES `usuarios` (`USER`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `mensajes`
+--
+
+LOCK TABLES `mensajes` WRITE;
+/*!40000 ALTER TABLE `mensajes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `mensajes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `piezas`
+--
+
+DROP TABLE IF EXISTS `piezas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `piezas` (
+  `ID_PIEZA` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `NSERIE` char(100) NOT NULL,
+  `NOMBRE` char(100) NOT NULL,
+  `MARCA` char(50) NOT NULL,
+  `BALDA` char(2) DEFAULT NULL,
+  `CAJA` smallint(5) unsigned DEFAULT NULL,
+  `STOCK` smallint(5) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID_PIEZA`),
+  UNIQUE KEY `NSERIE` (`NSERIE`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `piezas`
+--
+
+LOCK TABLES `piezas` WRITE;
+/*!40000 ALTER TABLE `piezas` DISABLE KEYS */;
+INSERT INTO `piezas` VALUES (1,'2215421000CVB','BOMBA AGUA FRIGORIFICO','BOSH','A',1,10),(2,'558475450000FGG','GAS FRIGORIFICO','BOSH','A',2,0),(3,'ASDH554522','AGUA DESTILADA','UNIVERSAL','B',2,6),(4,'JH887654','TERMOSTATO','LG','B',2,5),(5,'AGD6657665','TERMOSTATO','SIEMENS','C',1,6),(6,'887JJHUY','MOTOR SECADORA','FUJITSU','A',3,5);
+/*!40000 ALTER TABLE `piezas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `usuarios` (
+  `ID_USER` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `USER` char(100) NOT NULL,
+  `PASSWD` text NOT NULL,
+  `NIF` char(9) NOT NULL,
+  `NOMBRE` char(50) NOT NULL,
+  `TELFN` char(10) NOT NULL,
+  `NIVEL_SEGURIDAD` tinyint(4) NOT NULL,
+  PRIMARY KEY (`ID_USER`),
+  UNIQUE KEY `USER` (`USER`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+LOCK TABLES `usuarios` WRITE;
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES (1,'admin','21232f297a57a5a743894a0e4a801fc3','44968623N','admin admin admin','666111222',1),(2,'amandaMR','f1f544d1a85a050e2e1ff64a95dc4020','44968623N','Amanda MagraÃ±al Rasteu','675492095',1),(3,'josefinaBG','f1f544d1a85a050e2e1ff64a95dc4020','44968623N','Josefina Buen Gusto','666555444',2),(4,'olvidoAF','f1f544d1a85a050e2e1ff64a95dc4020','44968623N','Olvido Aroma Flores','632658741',3),(6,'joseRR','f1f544d1a85a050e2e1ff64a95dc4020','44968623N','Jose Rey Rubio','698541235',3);
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2017-04-28 18:25:27
